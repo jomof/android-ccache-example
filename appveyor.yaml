@@ -1,3 +1,4 @@
+version: 1.0.{build}
 environment:
   matrix:
     - ANDROID_HOME: "C:\\android-sdk-windows"
@@ -6,6 +7,6 @@ install:
   - 7z x sdk-tools-windows-3859397.zip -oC:\android-sdk-windows > nul
   - yes | C:\android-sdk-windows\tools\bin\sdkmanager.bat --licenses
 build_script:
-  - gradlew.bat assemble
+  - cmd: gradlew.bat assemble
 test_script:
-  - gradlew.bat test
+  - cmd: gradlew.bat test
