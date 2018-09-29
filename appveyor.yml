@@ -2,6 +2,7 @@ version: 1.0.{build}
 environment:
   matrix:
     - ANDROID_HOME: "C:\\android-sdk-windows"
+    
 install:
   - set OLD_PATH=%PATH%
   - set PATH=C:\msys64\usr\bin
@@ -19,7 +20,6 @@ install:
   # CMake
   - appveyor DownloadFile "https://cmake.org/files/v3.10/cmake-3.10.2-win64-x64.zip" -FileName cmake.zip
   - 7z x cmake.zip -oc:\bin
-  - dir c:\bin
   - set PATH=c:\bin\cmake-3.10.2-win64-x64\bin;%PATH%
   - cmake --version
   
@@ -27,7 +27,9 @@ install:
   - appveyor DownloadFile https://dl.google.com/android/repository/sdk-tools-windows-3859397.zip
   - 7z x sdk-tools-windows-3859397.zip -oC:\android-sdk-windows > nul
   - yes | C:\android-sdk-windows\tools\bin\sdkmanager.bat --licenses > nul
+  
 build_script:
   - gradlew.bat assemble
+  
 test_script:
   - gradlew.bat test
