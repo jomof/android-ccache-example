@@ -5,15 +5,16 @@
 
 cmake_minimum_required(VERSION 3.4.1)
 
-find_program( CCACHE ccache PATHS C:/msys64/usr/bin )
+
 if( CMAKE_HOST_WIN32 )
-    set( CMAKE_CXX_COMPILER_LAUNCHER ${CCACHE} )
-    set( CMAKE_C_COMPILER_LAUNCHER ${CCACHE} )
-else()
-    message( STATUS "Using ccache: ${CCACHE}" )
+    find_program( CCACHE ccache PATHS C:/msys64/usr/bin )
     set( ENV{CCACHE_BASEDIR} ${CMAKE_BINARY_DIR} )
     set( CMAKE_CXX_COMPILER_LAUNCHER ${CMAKE_SOURCE_DIR}/wrap-ccache.bat ${CCACHE} )
     set( CMAKE_C_COMPILER_LAUNCHER  ${CMAKE_SOURCE_DIR}/wrap-ccache.bat ${CCACHE} )
+else()
+    find_program( CCACHE ccache )
+    set( CMAKE_CXX_COMPILER_LAUNCHER ${CCACHE} )
+    set( CMAKE_C_COMPILER_LAUNCHER ${CCACHE} )
 endif()
 
 # Creates and names a library, sets it as either STATIC
