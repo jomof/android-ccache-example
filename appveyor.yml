@@ -8,8 +8,8 @@ install:
   - yes | pacman --sync ninja
   - appveyor DownloadFile https://dl.google.com/android/repository/sdk-tools-windows-3859397.zip
   - 7z x sdk-tools-windows-3859397.zip -oC:\android-sdk-windows > nul
-  - yes | C:\android-sdk-windows\tools\bin\sdkmanager.bat --licenses
+  - yes | C:\android-sdk-windows\tools\bin\sdkmanager.bat --licenses > nul
 build_script:
-  - cmd: gradlew.bat assemble
+  - gradlew.bat assemble
 test_script:
-  - cmd: gradlew.bat test
+  - gradlew.bat test
