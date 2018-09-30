@@ -2,6 +2,6 @@
 setlocal
 set "slashed=%*"
 set "slashed=%slashed:\=/%"
-echo %slashed$
+echo %slashed%
 %slashed%
 

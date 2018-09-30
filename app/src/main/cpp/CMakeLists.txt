@@ -1,16 +1,24 @@
-# For more information about using CMake with Android Studio, read the
-# documentation: https://d.android.com/studio/projects/add-native-code.html
+cmake_minimum_required(VERSION 3.10.2)
 
-# Sets the minimum version of CMake required to build the native library.
-
-cmake_minimum_required(VERSION 3.4.1)
-
-
+# Find ccache program and fail if not found
 if( CMAKE_HOST_WIN32 )
-    find_program( CCACHE ccache PATHS C:/msys64/usr/bin )
-    set( ENV{CCACHE_BASEDIR} ${CMAKE_BINARY_DIR} )
-    set( CMAKE_CXX_COMPILER_LAUNCHER ${CMAKE_SOURCE_DIR}/wrap-ccache.bat ${CCACHE} )
-    set( CMAKE_C_COMPILER_LAUNCHER  ${CMAKE_SOURCE_DIR}/wrap-ccache.bat ${CCACHE} )
+    # Find ccache on Windows. Edit PATHS variable if MSYS2 is installed in a different location.
+    find_program( CCACHE ccache1 PATHS C:/msys64/usr/bin )
+    if (CCACHE)
+        set( ENV{CCACHE_BASEDIR} ${CMAKE_BINARY_DIR} )
+        # As of ccache 3.4.3 there is a bug that requires the compiler path to clang have forward
+        # slashes. However, CMake as of 3.12.2 passes path to clang with backslashes. To overcome
+        # this limitation, a simple batch file wrap-cache.bat is used. This batch file converts
+        # back-slashes to forward slashes and then invokes ccache.
+        set( CMAKE_CXX_COMPILER_LAUNCHER ${CMAKE_SOURCE_DIR}/wrap-ccache.bat ${CCACHE} )
+        set( CMAKE_C_COMPILER_LAUNCHER  ${CMAKE_SOURCE_DIR}/wrap-ccache.bat ${CCACHE} )
+    else()
+        message( FATAL_ERROR "\
+Could not find CCache program. \
+One way to get CCache on Windows is to install MSYS2 at https://www.msys2.org/. \
+Once installed, use the pacman package manager to install ccache: \
+pacman --sync ccache." )
+    endif()
 else()
     find_program( CCACHE ccache )
     set( CMAKE_CXX_COMPILER_LAUNCHER ${CCACHE} )
