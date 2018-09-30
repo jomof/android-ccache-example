@@ -12,7 +12,7 @@ before_install:
 
 install:
   - wget --no-check-certificate https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
-  - unzip sdk-tools-windows-linux.zip
+  - unzip sdk-tools-linux-3859397.zip
   - ls tools/bin
   - echo Y | tools/bin/sdkmanager --licenses
   
