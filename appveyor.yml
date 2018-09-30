@@ -6,7 +6,7 @@ environment:
 install:
   - set OLD_PATH=%PATH%
   - set PATH=C:\msys64\usr\bin
-  - yes | C:\msys64\usr\bin\pacman --sync ccache
+  #- yes | C:\msys64\usr\bin\pacman --sync ccache
   - set PATH=%OLD_PATH%
 
   - md c:\bin
