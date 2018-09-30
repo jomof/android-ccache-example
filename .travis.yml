@@ -16,7 +16,7 @@ install:
   - yes | tools/bin/sdkmanager --licenses
   
   - wget --no-check-certificate "https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.tar.gz"
-  - unzip cmake-3.10.2-linux.zip
+  - : tar -xzf cmake-3.10.2-Linux-x86_64.tar.gz
   
 #   - wget --no-check-certificate https://dl.google.com/android/repository/android-ndk-r13b-linux-x86_64.zip -O android-ndk-r13b-linux-x86_64.zip
 #   - unzip android-ndk-r13b-linux-x86_64.zip > android-ndk-r13b-linux-x86_64.uncompress-log 2>&1
@@ -28,7 +28,7 @@ install:
 
 script:
   - echo sdk.dir=$PWD > local.properties 
-  - echo cmake.dir=$PWD/cmake-3.10.2-linux > local.properties 
+  - echo cmake.dir=$PWD/cmake-3.10.2-Linux-x86_64 > local.properties 
   - cat local.properties
   - ./gradlew assemble
 
