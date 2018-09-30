@@ -13,7 +13,8 @@ before_install:
 install:
   - wget --no-check-certificate https://dl.google.com/android/repository/sdk-tools-windows-3859397.zip
   - unzip sdk-tools-windows-3859397.zip
-  - yes | sdk-tools-windows-3859397/tools/bin/sdkmanager --licenses
+  - ls
+  - echo Y | sdk-tools-windows-3859397/tools/bin/sdkmanager --licenses
   
 #   - wget --no-check-certificate https://dl.google.com/android/repository/android-ndk-r13b-linux-x86_64.zip -O android-ndk-r13b-linux-x86_64.zip
 #   - unzip android-ndk-r13b-linux-x86_64.zip > android-ndk-r13b-linux-x86_64.uncompress-log 2>&1
