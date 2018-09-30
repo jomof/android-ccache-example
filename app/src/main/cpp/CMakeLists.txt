@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.10.2)
 # Find ccache program and fail if not found
 if( CMAKE_HOST_WIN32 )
     # Find ccache on Windows. Edit PATHS variable if MSYS2 is installed in a different location.
-    find_program( CCACHE ccache1 PATHS C:/msys64/usr/bin )
+    find_program( CCACHE ccache PATHS C:/msys64/usr/bin )
     if (CCACHE)
         set( ENV{CCACHE_BASEDIR} ${CMAKE_BINARY_DIR} )
         # As of ccache 3.4.3 there is a bug that requires the compiler path to clang have forward
