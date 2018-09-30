@@ -24,9 +24,7 @@ install:
 #   - find ${ANDROID_HOME}/cmake/*/bin/cmake
 
 script:
-  - ANDROID_HOME=$PWD
-  - echo $ANDROID_HOME
-  - ./gradlew assemble
+  -  ANDROID_HOME=$PWD & ./gradlew assemble
 
 #   - android list targets
   
