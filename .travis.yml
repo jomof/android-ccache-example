@@ -24,7 +24,7 @@ install:
 #   - find ${ANDROID_HOME}/cmake/*/bin/cmake
 
 script:
-  - ANDROID_HOME=$PWD/tools
+  - ANDROID_HOME=$PWD
   - echo $ANDROID_HOME
   - ./gradlew assemble
 
