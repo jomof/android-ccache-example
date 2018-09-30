@@ -14,7 +14,7 @@ install:
   - wget --no-check-certificate https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
   - unzip sdk-tools-linux-3859397.zip
   - ls tools/bin
-  - echo Y | tools/bin/sdkmanager --licenses
+  - yes | tools/bin/sdkmanager --licenses
   
 #   - wget --no-check-certificate https://dl.google.com/android/repository/android-ndk-r13b-linux-x86_64.zip -O android-ndk-r13b-linux-x86_64.zip
 #   - unzip android-ndk-r13b-linux-x86_64.zip > android-ndk-r13b-linux-x86_64.uncompress-log 2>&1
