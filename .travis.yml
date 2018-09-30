@@ -25,6 +25,7 @@ install:
 
 script:
   - ANDROID_HOME=$PWD/tools
+  - echo $ANDROID_HOME
   - ./gradlew assemble
 
 #   - android list targets
